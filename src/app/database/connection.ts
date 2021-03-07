@@ -8,7 +8,7 @@ const mongoDb = process.env.MONGO_DATABASE || 'test';
 
 const mongoUrl = `mongodb://${mongoUser}:${mongoPass}@${mongoHost}:${mongoPort}`;
 
-const connect = () => {
+export function setupDatabaseConnection() {
   mongoose
     .connect(`${mongoUrl}/${mongoDb}?authSource=admin`, {
       useNewUrlParser: true,
@@ -20,6 +20,4 @@ const connect = () => {
     .catch((error) => {
       console.log('Error: ', error);
     });
-};
-
-connect();
+}
