@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  db:
+    image: mongo:4.2-bionic
+    container_name: search_hackathon_db
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - 27017:27017
+
+  app:
+    build: .
+    container_name: search_hackathon_app
+    entrypoint: ./entrypoint.sh
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/usr/src/app
+    depends_on:
+      - db
