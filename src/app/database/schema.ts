@@ -14,6 +14,7 @@ const hackathonSchema = new Schema(
   },
   {
     timestamps: true,
+    versionKey: false,
   }
 );
 
