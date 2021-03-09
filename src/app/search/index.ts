@@ -5,10 +5,6 @@ import fuseOptions from './config';
 
 class FuseSearchHackathon implements SearchDataService {
   run(data: HackathonInterface[], query: string): HackathonInterface[] {
-    if (data.length === 0) {
-      return [];
-    }
-
     const keys = ['name', 'description', 'sponsor'];
     const fuse = new Fuse(data, fuseOptions(keys));
     const results = fuse.search(query);
